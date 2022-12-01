@@ -3,6 +3,7 @@ package com.nttdata.hibernate;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 
 import com.nttdata.hibernate.persistence.Client;
@@ -89,18 +90,22 @@ public class NTTDataMain {
 		// Generacion de resultados:
 		// Consulta HQL.
 		for (final Client client : clientsName) {
-			logger.info("Nombre: " + client.getClientName() + "; Primer apellido: " + client.getClientFirstSurname()
-					+ "; Segundo apellido: " + client.getClientSecondSurname() + "; DNI del cliente: "
-					+ client.getClientDNI());
+			logger.info("Nombre del cliente: {} {} {}; DNI del cliente: {}.", client.getClientName(),
+					client.getClientFirstSurname(), client.getClientSecondSurname(), client.getClientDNI());
 		}
 
 		// Consulta JPA Criteria.
+
+		String monthlyPriceStr;
+
 		for (final Client client : clientsNameAndContract) {
-			logger.info("Nombre: " + client.getClientName() + "; Primer apellido: " + client.getClientFirstSurname()
-					+ "; Segundo apellido: " + client.getClientSecondSurname() + "; ID del cliente: "
-					+ client.getContract().getContractID() + "; Expiracion del contrato: "
-					+ client.getContract().getExpiryDate() + "; Sueldo mensual: "
-					+ String.format("%.0f", client.getContract().getMonthlyPrice()) + " €.");
+
+			monthlyPriceStr = String.format("%.0f", client.getContract().getMonthlyPrice());
+
+			logger.info(
+					"Nombre del cliente: {} {} {}; ID del cliente: {}; Expiracion del contrato: {}; Sueldo mensual: {} €.",
+					client.getClientName(), client.getClientFirstSurname(), client.getClientSecondSurname(),
+					client.getContract().getContractID(), client.getContract().getExpiryDate(), monthlyPriceStr);
 		}
 
 		// Cierre de sesion.

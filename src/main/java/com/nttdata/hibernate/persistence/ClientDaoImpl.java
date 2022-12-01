@@ -60,7 +60,7 @@ public class ClientDaoImpl extends CommonDaoImpl<Client> implements ClientDaoI {
 		final Predicate pr2 = cb.like(rootP.<String>get("clientName"), namePattern);
 
 		// Consulta.
-		cquery.select(rootP).where(cb.and(pr1,pr2));
+		cquery.select(rootP).where(cb.and(pr1, pr2));
 
 		// Ejecución de consulta.
 		return session.createQuery(cquery).getResultList();

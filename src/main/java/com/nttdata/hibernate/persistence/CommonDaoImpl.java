@@ -88,9 +88,7 @@ public abstract class CommonDaoImpl<T extends AbstractEntity> implements CommonD
 		}
 
 		// Búsqueda por PK.
-		T result = session.get(this.entityClass, id);
-
-		return result;
+		return session.get(this.entityClass, id);
 
 	}
 
@@ -104,9 +102,7 @@ public abstract class CommonDaoImpl<T extends AbstractEntity> implements CommonD
 		}
 
 		// Búsqueda de todos los registros.
-		List<T> list = session.createQuery("FROM " + this.entityClass.getName()).list();
-
-		return list;
+		return session.createQuery("FROM " + this.entityClass.getName()).list();
 
 	}
 
