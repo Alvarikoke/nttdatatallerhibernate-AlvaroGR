@@ -3,16 +3,14 @@ package com.nttdata.hibernate;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.nttdata.hibernate.persistence.Client;
 import com.nttdata.hibernate.persistence.Contract;
 import com.nttdata.hibernate.services.ClientManagementServiceI;
 import com.nttdata.hibernate.services.ClientManagementServiceImpl;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Taller 1 y 2 de Hibernate de las practicas Dual de NTT Data
